@@ -21,7 +21,3 @@ Classic game of Tic-Tac-Toe
 
 # Add a new default AI
 
-## TODO
-
-[] Basic tic tac toe back-end
-[] Tic-Tac-Toe front end

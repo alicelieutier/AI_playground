@@ -1,0 +1,7 @@
+#tic_tac_toe td {
+  height: 20px;
+  width: 20px;
+  border: 1px black solid;
+  padding: 10px;
+  background: white;
+}

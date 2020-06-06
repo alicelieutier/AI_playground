@@ -1,10 +1,11 @@
 import flask
-from flask import request
+from flask import request, abort, jsonify
+from flask_cors import CORS
 import tictactoe
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
-
+CORS(app)
+# app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def home():
@@ -14,7 +15,8 @@ def home():
 def api_all():
   if request.method == 'GET':
     return 'This route should be used with POST'
-  content = request.json
-  return tictactoe.next_move(content)
+
+  move = tictactoe.next_move(request.json)
+  return jsonify(move)
 
 app.run()
