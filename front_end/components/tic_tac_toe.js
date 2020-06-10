@@ -1,7 +1,7 @@
 'use strict';
 import { html, Component, render } from 'https://unpkg.com/htm/preact/standalone.module.js';
 
-class App extends Component {
+class TicTacToe extends Component {
 
   constructor(props) {
     super(props);
@@ -101,14 +101,13 @@ class App extends Component {
     const winner = this.__winner()
     const gameOver = winner || this.__gridFull()
     return html`
-      <div class="app">
+      <div class="tic_tac_toe">
         <button onClick=${() => this.resetGame()}> New Game </button>
         <button onClick=${() => this.requestNextMove()} disabled=${gameOver}> Get next move </button>
-        <div id="tic_tac_toe">
+        <div id="grid">
           ${ winner ? html`<p>${winner}'s have won!</p>` : null}
           <${Table} grid="${this.state.grid}" playFun=${gameOver ? ()=>{} : (x,y) => this.play(x,y)}/>
         </div>
-        <footer>Find me on github</footer>
       </div>
     `;
   }
@@ -132,4 +131,4 @@ const Row = ({row, playFun, x}) => html`
 
 const Cell = ({ content, x, y, playFun }) => html`<td onClick=${() => playFun(x, y)}>${content || ''}</td>`
 
-render(html`<${App} />`, document.body);
+export { TicTacToe as default};
